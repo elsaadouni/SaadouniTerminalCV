@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w2.org/1999/xhtml">
+<html lang="en">
+    <head>
+	<meta name="generator" content="Hugo 0.129.0">
+            <meta charset="utf-8" />
+    <title>SaadouniTerminalCV </title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Saadouni Terminal CV">
+    <meta property="og:title" content="SaadouniTerminalCV" />
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://cv.elsaadouni.com/" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href=""/>
+    <link rel="canonical" href="https://cv.elsaadouni.com/" />    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/2.42.2/js/jquery.terminal.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.terminal/js/less.min.js"></script>
+    <script src="https://unpkg.com/jquery.terminal/js/autocomplete_menu.js"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/2.42.0/css/jquery.terminal.min.css" rel="stylesheet"/>
+
+    <style>
+        body {
+            width: 100%;
+            font-size: 18px;
+        }
+    </style>
+    
+
+    </head>
+        <body>
+        
+<script> 
+jQuery(document).ready(function($) {
+    var animation = false;
+
+    var commands = {
+        help: "shows help",
+        less: "Use less as output method",
+        whois: "list basic details",
+        social: "list social networks",
+        work: "list work experience",
+        education: "list education",
+        skills: "list core skills",
+        softskills: "list soft skills",
+        languages: "list spoken languages",
+        projects: "list projects",
+         
+            certifications: "list certifications",
+        
+        
+            startx: "starts graphical environment",
+        
+        
+        
+        
+            version: "Current version",
+        
+        
+            exit: "exit the terminal",
+        
+        all: "Show all details",
+    };
+
+
+    function progressBar(number) {
+        var barLength = Math.round(number / 10);
+        var barFilled = Array(barLength + 1).join("&#9611;");
+        var barBlank= Array(11 - barLength).join("&#9617;");
+
+        return barFilled + barBlank
+    }
+
+    
+    function padKey(key, length) {
+        return key + ' '.repeat(length - key.length);
+    }
+
+    function commandsHelp() {
+        let longestKeyLength = Math.max(...Object.keys(commands).map(key => key.length));
+
+        let helpText = ""
+        for (let key in commands) {
+            if (commands.hasOwnProperty(key)) {
+                helpText += ` ${padKey(key, longestKeyLength)}\t${commands[key]}\n`
+            }
+        }
+        return helpText
+    }
+
+    var help = '\n[[b;white;]usage:]\n' +
+                '\n <command> - execute the command\n' +
+                ' less <command> - use less to display the output\n\n' +
+                '\n[[b;white;]Available commands:]\n' + 
+               commandsHelp();
+
+    var whois = [
+     
+        '[[b;grey;]Name:]\t\t\tMohamed Elsaadouni\n' + 
+        '[[b;grey;]Profession:]\t\tIT Geek, Application Support Manager, and A Father\n' +
+        '[[b;grey;]Location:]\t\tAbu Dhabi, UAE\n' +
+        
+        '[[b;grey;]Email:]\t\t\thi@elsaadouni.com\n' +
+        
+        
+        '[[b;grey;]Homepage:]\t\thttps:\/\/elsaadouni.com\n' +
+        
+        
+        'An innovative IT leader with a fusion of creativity and data-driven success, specializing in application support, project management, and team empowerment. With a background in the health insurance industry, I excel at problem-solving and driving excellence.\n' +
+        
+        '\r',
+    
+    ];
+
+    function social() { 
+        var hideName = false;
+        let sMap = { 
+             
+                
+                "instagram": "https:\/\/instagram.com\/m.elsaadouni",
+                
+                "github": "https:\/\/github.com\/elsaadouni",
+                
+                "linkedin": "https:\/\/www.linkedin.com\/in\/melsaadouni\/",
+                
+            
+        };
+
+        
+        socialText = []
+        for (let key in sMap) {
+            if (sMap.hasOwnProperty(key)) {
+                if (hideName) {
+                    socialText.push(sMap[key]);
+                } else { 
+                    let longestKeyLength = Math.max(...Object.keys(sMap).map(key => key.length));
+                    socialText.push(`${padKey(key, longestKeyLength)}\t${sMap[key]}`)
+                };
+            }
+        }
+
+        return socialText
+    }
+
+    var certifications = [
+    
+        
+            '---\n' +
+            '[[b;yellow;]Contact Center Skills and Medical Terminology]\n' +
+            'May - July 2009\n' +
+            
+            'Training Insights \u0026 Spearhead Co, Abu Dhabi, U.A.E\n' +
+            
+            
+            'Completed comprehensive training on contact center skills and medical terminology, enhancing proficiency in customer interactions within medical contexts.\n' +
+            
+            
+            '\r',
+        
+            '---\n' +
+            '[[b;blue;]Excellent Customer Services \/ Customer Service]\n' +
+            'February 2010 \/ March 2010, March 2013\n' +
+            
+            'Training Spearhead Co, Abu Dhabi, U.A.E\n' +
+            
+            
+            'Gained expertise in delivering outstanding customer service, focusing on effective communication and customer satisfaction.\n' +
+            
+            
+            '\r',
+        
+            '---\n' +
+            '[[b;green;]Optimizing Your Performance]\n' +
+            'June 2015\n' +
+            
+            'Ideas Group, Abu Dhabi, U.A.E\n' +
+            
+            
+            'Attended training aimed at enhancing personal and professional performance through strategic planning and execution.\n' +
+            
+            
+            '\r',
+        
+            '---\n' +
+            '[[b;red;]Creative Problem Solving \u0026 Decision Making]\n' +
+            'June 2015\n' +
+            
+            'Al Khwarizmi College, Abu Dhabi, U.A.E\n' +
+            
+            
+            'Acquired skills in innovative problem solving and decision-making processes, applicable to various professional scenarios.\n' +
+            
+            
+            '\r',
+        
+            '---\n' +
+            '[[b;purple;]ITIL® Foundation and Intermediate]\n' +
+            'Nov 2015, May, Nov 2016, and Feb 2017\n' +
+            
+            'PEOPLECERT\/AXELOS\/EXIN, Dubai, U.A.E\n' +
+            
+            
+            'Completed ITIL® certification covering foundational and intermediate levels, focusing on IT service management best practices.\n' +
+            
+            
+            '\r',
+        
+            '---\n' +
+            '[[b;orange;]Supervisory Skills]\n' +
+            'July - Oct 2017\n' +
+            
+            'SELECT TRAINING, Abu Dhabi, U.A.E\n' +
+            
+            
+            'Developed supervisory skills through training focused on leadership, team management, and effective supervision.\n' +
+            
+            
+            '\r',
+        
+            '---\n' +
+            '[[b;cyan;]RHCSA Administration I]\n' +
+            'Nov 2018\n' +
+            
+            'Redhat\n' +
+            
+            
+            'Received training on Red Hat Certified System Administrator (RHCSA) administration, covering essential system administration tasks.\n' +
+            
+            
+            '\r',
+        
+            '---\n' +
+            '[[b;brown;]Coach for Performance, Level I and II Training]\n' +
+            'Nov 2020 and June 2021\n' +
+            
+            'SELECT TRAINING, Abu Dhabi, U.A.E\n' +
+            
+            
+            'Completed Level I and II training on coaching for performance, aimed at enhancing coaching skills to drive team performance.\n' +
+            
+            
+            '\r',
+        
+            '---\n' +
+            '[[b;pink;]Agile Leadership]\n' +
+            'Sept 2021\n' +
+            
+            'SELECT TRAINING, Abu Dhabi, U.A.E\n' +
+            
+            
+            'Attended training on agile leadership, focusing on leading teams in an agile environment to achieve organizational goals.\n' +
+            
+            
+            '\r',
+        
+    
+    ];
+    
+    var work = [
+    
+        
+            '---\n' +
+            '[[b;red;]Manager IT Applications]\n' +
+            'Daman - National Health Insurance Company\n' +
+            'Abu Dhabi, UAE\n' +
+            'July 2024 - Present\n' +
+            '\n' +
+            'Leading a skilled team in maintaining and optimizing critical health insurance applications, providing strategic oversight of application support processes, and enhancing user experience through expertise in Oracle and Windows environments.\n' +
+            '\r',
+        
+            '---\n' +
+            '[[b;Fuchsia;]Assistant Manager, IT Application Support]\n' +
+            'Daman - National Health Insurance Company\n' +
+            'Abu Dhabi, UAE\n' +
+            'November 2022 - August 2024\n' +
+            '\n' +
+            'Managed and led a team of IT application support professionals, handled technical support and troubleshooting, and managed projects related to application implementation, upgrades, and integration.\n' +
+            '\r',
+        
+            '---\n' +
+            '[[b;blue;]IT Senior Officer, Application Support]\n' +
+            'Daman - National Health Insurance Company\n' +
+            'Abu Dhabi, UAE\n' +
+            '2017 - November 2022\n' +
+            '\n' +
+            'Supervised day-to-day operations, performed application performance analysis, managed application configuration and upgrades, and ensured compliance with best practices and standards.\n' +
+            '\r',
+        
+            '---\n' +
+            '[[b;yellow;]IT Officer, Service Level Management]\n' +
+            'Daman - National Health Insurance Company\n' +
+            'Abu Dhabi, UAE\n' +
+            'January 2015 - April 2017\n' +
+            '\n' +
+            'Developed regular service level reports, maintained applications, processes KPI and SLA targets, and acted as a single point of contact for IT application unit in relation to service level management.\n' +
+            '\r',
+        
+            '---\n' +
+            '[[b;Lime;]Team Leader, IT Helpdesk]\n' +
+            'Daman - National Health Insurance Company\n' +
+            'Abu Dhabi, UAE\n' +
+            'January 2009 - December 2014\n' +
+            '\n' +
+            'Recorded and responded to requests for 1st and 2nd line support, improved the usability and reliability of Daman services, and managed third-party suppliers.\n' +
+            '\r',
+        
+            '---\n' +
+            '[[b;Aqua;]I.T Support Handling ARC Department]\n' +
+            'Group 4 Securicor\n' +
+            'Dubai, UAE\n' +
+            'June 2007 - August 2008\n' +
+            '\n' +
+            'Installed, maintained, and supported computer communication networks within the organization, and handled online user maintenance, troubleshooting, and system configuration.\n' +
+            '\r',
+        
+            '---\n' +
+            '[[b;Maroon;]Receptionist]\n' +
+            'Royal Plaza Hotel\n' +
+            'Sharm El-Sheikh, Egypt\n' +
+            'August 2006 - May 2007\n' +
+            '\n' +
+            'Provided attentive and efficient service to all guests during check-in, stay, and checkout, maximizing room revenue and occupancy.\n' +
+            '\r',
+        
+            '---\n' +
+            '[[b;DarkOrange;]I.T Administrator]\n' +
+            'Royal Plaza Hotel\n' +
+            'Sharm El-Sheikh, Egypt\n' +
+            'July 2004 - August 2006\n' +
+            '\n' +
+            'Managed infrastructure maintenance, user PC maintenance, backup restore, and network software\/hardware.\n' +
+            '\r',
+        
+    
+    ];
+
+    var education = [
+    
+        
+            '---\n' +
+            '[[b;red;]Computer Science and System Information from Delta Academy at Mansoura]\n' +
+            '2000 - 2004\n' +
+            
+                "Bachelor\u0027s degree in Computer Science, Achieved a \u0027Very Good\u0027 rating.\n\n" +
+            
+            "\r",
+        
+    
+    ];
+
+    var projects = [
+    
+        
+            '---\n' +
+            '[[b;red;]Disaster Recovery Project]\n' +
+            'Oct 2018 and Mar 2022\n' +
+            '\n' +
+            
+            'Running the first and second disaster recovery project in the company for 4 days, was a very challenging and exciting experience.\n' +
+            
+            "\r",
+      
+            '---\n' +
+            '[[b;blue;]Data Center Migration\/Transformation Project]\n' +
+            'Jul 2017 – Oct 2017\n' +
+            '\n' +
+            
+            'Complete Data Center Transformation, Re-installing and configuring all the applications from the scratch was a great project to empower your experience with all the details\n' +
+            
+            "\r",
+      
+    
+    ];
+
+    var skills = [
+    
+        
+            '[[b;DodgerBlue;]SQL \u0026 Oracle Databases:]\n' +
+            progressBar( 90 ) +
+            '90' + '%\n' +
+            
+            'Advanced knowledge in SQL and Oracle databases, facilitating robust data management and analysis.\n' +
+            
+            '\r',
+        
+            '[[b;DarkOliveGreen;]Windows Server:]\n' +
+            progressBar( 98 ) +
+            '98' + '%\n' +
+            
+            'Proficient in managing and maintaining Windows Server environments to ensure reliable IT infrastructure.\n' +
+            
+            '\r',
+        
+            '[[b;DarkTurquoise;]Web Applications:]\n' +
+            progressBar( 95 ) +
+            '95' + '%\n' +
+            
+            'Skilled in supporting and optimizing web applications for enhanced performance and user experience.\n' +
+            
+            '\r',
+        
+            '[[b;Coral;]Reporting Tools (SSRS, Crystal Reports):]\n' +
+            progressBar( 97 ) +
+            '97' + '%\n' +
+            
+            'Expertise in utilizing reporting tools like SSRS and Crystal Reports to generate insightful business reports.\n' +
+            
+            '\r',
+        
+            '[[b;MediumPurple;]Application Performance Management:]\n' +
+            progressBar( 93 ) +
+            '93' + '%\n' +
+            
+            'Proficient in using tools like AppDynamics for monitoring and improving application performance.\n' +
+            
+            '\r',
+        
+            '[[b;DarkSlateBlue;]WordPress Development:]\n' +
+            progressBar( 90 ) +
+            '90' + '%\n' +
+            
+            'Proficient in creating and managing websites using WordPress, including theme customization and plugin integration.\n' +
+            
+            '\r',
+        
+            '[[b;ForestGreen;]Linux Administration:]\n' +
+            progressBar( 85 ) +
+            '85' + '%\n' +
+            
+            'Skilled in managing and maintaining Linux servers, ensuring optimal performance and security.\n' +
+            
+            '\r',
+        
+            '[[b;DarkGoldenRod;]Nginx Web Server:]\n' +
+            progressBar( 92 ) +
+            '92' + '%\n' +
+            
+            'Experienced in configuring and optimizing Nginx web servers for high availability and performance.\n' +
+            
+            '\r',
+        
+            '[[b;SteelBlue;]Cloud Services (AWS, Azure):]\n' +
+            progressBar( 80 ) +
+            '80' + '%\n' +
+            
+            'Knowledgeable in deploying and managing applications on cloud platforms like AWS and Azure.\n' +
+            
+            '\r',
+        
+            '[[b;LightSeaGreen;]Docker \u0026 Containerization:]\n' +
+            progressBar( 78 ) +
+            '78' + '%\n' +
+            
+            'Proficient in using Docker for containerizing applications and managing containerized environments.\n' +
+            
+            '\r',
+        
+            '[[b;FireBrick;]Python Programming:]\n' +
+            progressBar( 80 ) +
+            '80' + '%\n' +
+            
+            'Skilled in Python programming for automation, data analysis, and web development.\n' +
+            
+            '\r',
+        
+            '[[b;Maroon;]Technical Support:]\n' +
+            progressBar( 90 ) +
+            '90' + '%\n' +
+            
+            'Extensive experience in troubleshooting and resolving technical issues.\n' +
+            
+            '\r',
+        
+    
+    ];
+
+    var softSkills = [
+    
+        
+            '[[b;DarkOrange;]Team Leadership:]\n' +
+            progressBar( 99 ) +
+            '99' + '%\n' + 
+            
+            'Proven ability to lead and manage teams effectively, driving projects to successful completion while fostering a collaborative and motivated environment, as well as a skilled in strategic planning, conflict resolution,and leveraging individual strengths to achieve collective goals.\n' +
+            
+            '\r',
+        
+            '[[b;MediumSeaGreen;]Communication:]\n' +
+            progressBar( 95 ) +
+            '95' + '%\n' + 
+            
+            'Exceptional interpersonal and communication skills, fostering effective collaboration across diverse teams and stakeholders.\n' +
+            
+            '\r',
+        
+            '[[b;LightCoral;]Problem-Solving:]\n' +
+            progressBar( 94 ) +
+            '94' + '%\n' + 
+            
+            'Passionate problem-solver with a knack for troubleshooting and resolving complex technical issues.\n' +
+            
+            '\r',
+        
+            '[[b;RoyalBlue;]Project Management:]\n' +
+            progressBar( 93 ) +
+            '93' + '%\n' + 
+            
+            'Skilled in managing projects from inception to completion, ensuring timely delivery and alignment with business goals.\n' +
+            
+            '\r',
+        
+            '[[b;Gold;]Customer Service:]\n' +
+            progressBar( 97 ) +
+            '97' + '%\n' + 
+            
+            'Dedicated to providing excellent customer service, enhancing user experience and satisfaction.\n' +
+            
+            '\r',
+        
+            '[[b;DarkCyan;]Application Support:]\n' +
+            progressBar( 97 ) +
+            '97' + '%\n' + 
+            
+            'Extensive experience in providing technical support for enterprise-level applications.\n' +
+            
+            '\r',
+        
+            '[[b;MediumOrchid;]ITIL Service Management:]\n' +
+            progressBar( 95 ) +
+            '95' + '%\n' + 
+            
+            'Expertise in ITIL framework, ensuring best practices in IT service management and delivery.\n' +
+            
+            '\r',
+        
+            '[[b;Tomato;]Process Improvement:]\n' +
+            progressBar( 98 ) +
+            '98' + '%\n' + 
+            
+            'Proactive in streamlining processes to improve efficiency and operational effectiveness.\n' +
+            
+            '\r',
+        
+            '[[b;SlateGray;]Risk Management:]\n' +
+            progressBar( 93 ) +
+            '93' + '%\n' + 
+            
+            'Competent in identifying, managing, and mitigating application-related risks.\n' +
+            
+            '\r',
+        
+            '[[b;LightSlateGray;]Vendor Management:]\n' +
+            progressBar( 92 ) +
+            '92' + '%\n' + 
+            
+            'Experienced in coordinating with external vendors to ensure service quality and compliance with standards.\n' +
+            
+            '\r',
+        
+    
+    ];
+  
+    var languages = [
+    
+        
+            '[[b;Blue;]Arabic:]\n' +
+            progressBar( 100 )+ 
+            '100' + '%\n' +
+            
+            'Native proficiency in Arabic.\n' +
+            
+            '\r',
+        
+            '[[b;yellow;]English:]\n' +
+            progressBar( 94 )+ 
+            '94' + '%\n' +
+            
+            'Fluent in English, with strong writing and speaking skills.\n' +
+            
+            '\r',
+        
+    
+    ];
+
+    var misc = [
+         
+    ];
+
+    var source =  '        _______            \n' +
+                  '       |       |           \n' +
+                  '       |       |           \n' +
+                  '       |_______|_______    \n' +
+                  '               |       |   \n' +
+                  '               |       |   \n' +
+                  ' ______________|_______|   \n' +
+                  '|      |       |       |   \n' +
+                  '|      |       |       |   \n' +
+                  '|______|_______|_______|   \n' +
+                  '[[;red;]Thank You]\n' +
+                  '[[;grey;]https://www.elsaadouni.com\n';
+
+    var all = [ 
+        whois,
+        social(),
+        work,
+        education,
+        skills,
+        softSkills,
+        languages,
+        projects,
+        certifications,
+        misc,
+        
+        
+        source,
+        
+    ]
+
+    $('body').terminal(function(command, term) {
+
+        var useLess = false;
+        
+        useLess = true;
+        
+
+        function echoArray(array) {
+            if (useLess) {
+                term.less(array);
+            } else {
+                for (i = 0; i < array.length; i += 1) {
+                    term.echo(array[i]);
+                }
+            }
+        }
+        
+        function progress(percent, width) {
+            var size = Math.round(width*percent/100);
+            var left = '', taken = '', i;
+            for (i=size; i--;) {
+                taken += '=';
+            }
+            if (taken.length > 0) {
+                taken = taken.replace(/=$/, '>');
+            }
+            for (i=width-size; i--;) {
+                left += ' ';
+            }
+            return '[' + taken + left + '] ' + percent + '%';
+        }
+
+        function loading () {
+            var i = 0, size = 30;
+            prompt = term.get_prompt();
+            string = progress(0, size);
+            term.set_prompt(progress);
+            animation = true;
+            (function loop() {
+                string = progress(i++, size);
+                term.set_prompt(string);
+                if (i < 100) {
+                    timer = setTimeout(loop, 10);
+                } else {
+                    term.echo(progress(i, size) + ' [[b;green;]OK]').set_prompt(prompt);
+                    animation = false
+                }
+            })();
+        }
+
+        commands = command.split(/[ ]+/);
+        if (commands[0] == 'less') {
+            useLess = true;
+            commands.shift();
+        } 
+                    
+        switch(commands[0]) {
+            case 'whois':
+                
+                echoArray(whois);
+                break;
+            case 'social':
+                
+                echoArray(social());
+                break;
+            case 'work':
+                
+                echoArray(work);
+                break;
+            case 'education':
+                
+                echoArray(education);
+                break;
+            case 'skills':
+                
+                echoArray(skills);
+                break;
+            case 'softskills':
+                
+                echoArray(softSkills);
+                break;
+            case 'languages':
+                
+                echoArray(languages);
+                break;
+            case 'projects':
+                
+                echoArray(projects);
+                break;
+            case 'certifications':
+                
+                term.echo(certifications);
+                break;
+            case 'misc':
+                
+                echoArray(misc);
+                break;
+            case 'help':
+            case '?':
+                term.echo(help);
+                break;
+            case 'all':
+                
+                echoArray(all.flat(1));
+                break;
+            
+            case 'startx':
+                term.echo("loading ...");
+                loading();
+                setTimeout(function(){window.location = "https:\/\/www.elsaadouni.com"}, 2000);
+                break;
+            
+            case ':(){:|:&};:':
+                term.echo("nice try");
+                break;
+            case 'source':
+                
+                term.echo(source);
+                break;
+            
+            case 'exit':
+                term.echo("terminating ... ")
+                loading();
+                setTimeout(function(){window.location = 'about:blank'}, 2000);
+                break;
+            
+            
+            case 'version':
+                term.echo("2.0.0");
+                break;
+            
+            case '':
+                break;
+            default:
+                term.echo("\nunknown command: " + command + "\n" +
+                          "please type 'help' or '?' for a list of available commands\n");
+        }
+    }, {
+        prompt: '[[;red;][][[;pink;]hello@SaadouniTerminalCV][[;red;]\\]][[;grey;]-][[;red;][][[;blue;]~\/SaadouniTerminalCV][[;red;]\\]][[;orange;]: ]',
+        greetings: "[[b;white;]‎   \n‎   \n\n    ___  ___      _                              _   _____ _                     _                   _ \n    |  \\\/  |     | |                            | | |  ___| |                   | |                 (_)\n    | .  . | ___ | |__   __ _ _ __ ___   ___  __| | | |__ | |___  __ _  __ _  __| | ___  _   _ _ __  _ \n    | |\\\/| |\/ _ \\| \u0027_ \\ \/ _\u0060 | \u0027_ \u0060 _ \\ \/ _ \\\/ _\u0060 | |  __|| \/ __|\/ _\u0060 |\/ _\u0060 |\/ _\u0060 |\/ _ \\| | | | \u0027_ \\| |\n    | |  | | (_) | | | | (_| | | | | | |  __\/ (_| | | |___| \\__ \\ (_| | (_| | (_| | (_) | |_| | | | | |\n    \\_|  |_\/\\___\/|_| |_|\\__,_|_| |_| |_|\\___|\\__,_| \\____\/|_|___\/\\__,_|\\__,_|\\__,_|\\___\/ \\__,_|_| |_|_|\n                                                                                                       \n                                                                                                       \n                           _____                    _             _     ___         \n                          \/__   \\___ _ __ _ __ ___ (_)_ __   __ _| |   \/ __\\\/\\   \/\\ \n                            \/ \/\\\/ _ \\ \u0027__| \u0027_ \u0060 _ \\| | \u0027_ \\ \/ _\u0060 | |  \/ \/   \\ \\ \/ \/ \n                           \/ \/ |  __\/ |  | | | | | | | | | | (_| | | \/ \/___  \\ V \/  \n                           \\\/   \\___|_|  |_| |_| |_|_|_| |_|\\__,_|_| \\____\/   \\_\/   \n                                                                                    \n                                                                      \n                                     \nWelcome to my online resume\n\nType \u0027help\u0027 for a list of available commands\n\nType \u0027startx\u0027 to go to https:\/\/www.elsaadouni.com\n]",
+
+        keydown: function(e, term) {
+            if (animation) {
+                if (e.which == 68 && e.ctrlKey) { 
+                    clearTimeout(timer);
+                    animation = false;
+                    term.echo(string + ' [[b;red;]FAIL]')
+                    .set_prompt(prompt);
+                }
+                return false;
+            }
+        },
+        autocompleteMenu: true,
+        completion: Object.keys(commands)
+        
+    });
+});
+</script>
+
+        </body>
+</html>
